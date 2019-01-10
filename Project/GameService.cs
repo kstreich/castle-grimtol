@@ -105,7 +105,7 @@ namespace CastleGrimtol.Project
       room6.Exits.Add("south", room6NES);
       room6.Exits.Add("west", room5);
       room6.Exits.Add("east", room6NES);
-      #endregion
+
 
       room7.Exits.Add("north", room7NS);
       room7.Exits.Add("south", room7NS);
@@ -116,6 +116,28 @@ namespace CastleGrimtol.Project
       room8.Exits.Add("south", room11);
       room8.Exits.Add("west", room7);
       room8.Exits.Add("east", room10);
+
+      #endregion
+
+      //Items
+      #region 
+      //Room 2
+      Item key1 = new Item("Key 1", "Brass skeleton key");
+      room2.Items.Add(key1);
+      Item key2 = new Item("Key 2", "Short stubby key");
+      room2.Items.Add(key2);
+      Item key3 = new Item("Key 3", "Jewel encrusted key");
+      room2.Items.Add(key3);
+      //Room 3
+      Item axe = new Item("Axe", "A woodchopping axe");
+      room3.Items.Add(axe);
+      // Room 4
+      Item food = new Item("Food", "Loaf of bread");
+      room5.Items.Add(food);
+
+
+      #endregion
+
 
       Room currentRoom = room1;
     }
