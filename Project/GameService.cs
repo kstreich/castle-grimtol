@@ -46,8 +46,12 @@ namespace CastleGrimtol.Project
 
     public void Setup()
     {
+      //create rooms here
+      Room outside = new Room("Outside", "You are making your journey though an enchanted forrest, but need to stop to rest for the night. Luckily for you, there is what looks to be, an abandoned mansion up a head. You decide to check it out.");
+      //Room entryway = new Room("")
 
-      throw new System.NotImplementedException();
+
+      //current room equals the outside room, set this up at the end
 
     }
 

@@ -7,7 +7,7 @@ namespace CastleGrimtol
   {
     public static void Main(string[] args)
     {
-      Console.WriteLine("Time to Castle Grimtol!");
+      Console.WriteLine("Time to play a little game");
     }
   }
 }
