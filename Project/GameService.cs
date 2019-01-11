@@ -13,18 +13,30 @@ namespace CastleGrimtol.Project
     public void GetUserInput()
     {
       string playerInput;
+
       System.Console.WriteLine("Please enter in what you would like to do");
       playerInput = System.Console.ReadLine();
+      string[] inputArr = playerInput.Split(" ");
 
-      switch (playerInput)
+
+      //split the string and add to an array then use array[0]
+
+      while (true)
       {
-        case "go":
-          Go(playerInput);
-          break;
+        switch (playerInput.ToUpper())
+        {
+          case "go":
+            Go(inputArr[1]);
+            break;
 
 
 
-      };
+
+        };
+
+
+
+      }
       //switch statement for all of the different action of the user
     }
     public void Go(string direction)
@@ -170,7 +182,7 @@ namespace CastleGrimtol.Project
     {
       while (Playing)
       {
-        Help();
+        GetUserInput();
       };
     }
 
