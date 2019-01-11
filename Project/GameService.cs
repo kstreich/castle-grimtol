@@ -8,20 +8,46 @@ namespace CastleGrimtol.Project
   {
     public IRoom CurrentRoom { get; set; }
     public Player CurrentPlayer { get; set; }
+    public bool Playing { get; set; } = true; //sets default value of property
 
     public void GetUserInput()
     {
-      throw new System.NotImplementedException();
-    }
+      string playerInput;
+      System.Console.WriteLine("Please enter in what you would like to do");
+      playerInput = System.Console.ReadLine();
 
+      switch (playerInput)
+      {
+        case "go":
+          Go(playerInput);
+          break;
+
+
+
+      };
+      //switch statement for all of the different action of the user
+    }
     public void Go(string direction)
     {
-      throw new System.NotImplementedException();
+
+
+      // if (CurrentRoom.Exits.ContainsKey("north"))
+      // {
+
+      // }
     }
 
     public void Help()
     {
-      throw new System.NotImplementedException();
+      System.Console.WriteLine("Below is your list of commands: ");
+      System.Console.WriteLine(@"
+        go - moves you from room to room
+        take - add item to your inventory
+        use<item> - use an item from your inventory or from room
+        look - displays the description of the current room
+        inventory - will display a list items in your inventory
+      ");
+      GetUserInput();
     }
 
     public void Inventory()
@@ -73,7 +99,6 @@ namespace CastleGrimtol.Project
       Room lockedDoor = new Room("Locked", "This door is locked and you have no way of unlocking it");
 
       #endregion
-
       //Exits
       #region
       room1.Exits.Add("north", room1N);
@@ -118,7 +143,6 @@ namespace CastleGrimtol.Project
       room8.Exits.Add("east", room10);
 
       #endregion
-
       //Items
       #region 
       //Room 2
@@ -144,7 +168,10 @@ namespace CastleGrimtol.Project
 
     public void StartGame()
     {
-      throw new System.NotImplementedException();
+      while (Playing)
+      {
+        Help();
+      };
     }
 
     public void TakeItem(string itemName)
