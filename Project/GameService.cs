@@ -17,36 +17,63 @@ namespace CastleGrimtol.Project
       System.Console.WriteLine("Please enter in what you would like to do");
       playerInput = System.Console.ReadLine();
       string[] inputArr = playerInput.Split(" ");
-
-
+      string command = inputArr[0];
       //split the string and add to an array then use array[0]
 
       while (true)
       {
-        switch (playerInput.ToUpper())
+        switch (command.ToUpper())
         {
-          case "go":
+          case "GO":
             Go(inputArr[1]);
             break;
-
-
-
+          case "TAKE":
+            TakeItem(inputArr[1]);
+            break;
+          case "LOOK":
+            Look();
+            break;
+          case "USE":
+            UseItem(inputArr[1]);
+            break;
+          case "INVENTORY":
+            Inventory();
+            break;
 
         };
-
-
-
       }
-      //switch statement for all of the different action of the user
     }
     public void Go(string direction)
     {
+      if (CurrentRoom.Exits.ContainsKey(direction))
+      {
+        CurrentRoom = CurrentRoom.Exits[direction];
+        System.Console.WriteLine(CurrentRoom.Description);
+      }
 
 
-      // if (CurrentRoom.Exits.ContainsKey("north"))
+
+
+      // while (true)
       // {
-
+      //   switch (CurrentRoom.Exits.ContainsKey(direction.ToUpper()))
+      //   {
+      //     case "NORTH":
+      //       System.Console.WriteLine(CurrentRoom.Description);
+      //       break;
+      //     case "SOUTH":
+      //       System.Console.WriteLine(CurrentRoom.Description);
+      //       break;
+      //     case "WEST":
+      //       System.Console.WriteLine(CurrentRoom.Description);
+      //       break;
+      //     case "EAST":
+      //       System.Console.WriteLine(CurrentRoom.Description);
+      //       break;
+      //   }
       // }
+
+
     }
 
     public void Help()
@@ -54,8 +81,8 @@ namespace CastleGrimtol.Project
       System.Console.WriteLine("Below is your list of commands: ");
       System.Console.WriteLine(@"
         go - moves you from room to room
-        take - add item to your inventory
-        use<item> - use an item from your inventory or from room
+        take <item> - add item to your inventory
+        use <item> - use an item from your inventory or from room
         look - displays the description of the current room
         inventory - will display a list items in your inventory
       ");
