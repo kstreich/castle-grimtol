@@ -10,10 +10,10 @@ namespace CastleGrimtol
     {
       GameService gamePlay = new GameService();
       Console.Clear();
-      Console.WriteLine("Your objective is to survive your journey");
+      Console.WriteLine("Your objective is to survive your journey.");
 
       Console.WriteLine(@"
-Here are some of your console commands
+Console commands
         go - moves you from room to room
         take - add item to your inventory
         use<item> - use an item from your inventory or from room
@@ -23,34 +23,39 @@ Here are some of your console commands
 You can refer to this list by typing in 'help'
       ");
 
-      Console.WriteLine("Are you ready to play? (Y/N)");
-      string startInput = Console.ReadLine();
-      string name = "";
+      // Console.WriteLine("Are you ready to play? (Y/N)");
+      // string startInput = Console.ReadLine();
+      string name;
+      Console.WriteLine("Please enter your name");
+      name = Console.ReadLine();
 
-      if (startInput == "Y" || startInput == "y")
-      {
-        Console.Clear();
-        Console.Write("Please enter your name: ");
-        while (true)
-        {
-          name = Console.ReadLine();
-          if (name.Length < 1)
-          {
-            continue;
-          }
-          Console.Clear();
-          break;
-        }
 
-      }
-      else if (startInput == "N" || startInput == "n")
-      {
-        gamePlay.Quit();
-      }
+      #region 
+      // if (startInput == "Y" || startInput == "y")
+      // {
+      //   Console.Clear();
+      //   Console.Write("Please enter your name: ");
+      //   while (true)
+      //   {
+      //     name = Console.ReadLine();
+      //     if (name.Length > 1)
+      //     {
+      //       continue;
+      //     }
+      //     Console.Clear();
+      //     break;
+      //   }
+
+      // }
+      // else if (startInput == "N" || startInput == "n")
+      // {
+      //   gamePlay.Quit();
+      // }
+      #endregion
 
       Player player = new Player(name);
 
-      Console.WriteLine("It's time to pay close attention...");
+      Console.WriteLine($"It's time to pay close attention {name}");
 
       Console.WriteLine("\n You are making your journey though an enchanted forest, but need to stop to rest for the night. Luckily for you, there is what looks to be, an abandoned mansion up a head. You decide to check it out.");
 

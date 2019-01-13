@@ -14,10 +14,11 @@ namespace CastleGrimtol.Project
     {
       string playerInput;
 
-      System.Console.WriteLine("Please enter in what you would like to do");
+      System.Console.Write("What you would like to do");
       playerInput = System.Console.ReadLine();
       string[] inputArr = playerInput.Split(" ");
       string command = inputArr[0];
+
       //split the string and add to an array then use array[0]
 
       while (true)
@@ -39,6 +40,9 @@ namespace CastleGrimtol.Project
           case "INVENTORY":
             Inventory();
             break;
+          case "HELP":
+            Help();
+            break;
 
         };
       }
@@ -49,11 +53,13 @@ namespace CastleGrimtol.Project
       {
         CurrentRoom = CurrentRoom.Exits[direction];
         System.Console.WriteLine(CurrentRoom.Description);
+        GetUserInput();
       }
 
 
 
 
+      #region
       // while (true)
       // {
       //   switch (CurrentRoom.Exits.ContainsKey(direction.ToUpper()))
@@ -72,7 +78,7 @@ namespace CastleGrimtol.Project
       //       break;
       //   }
       // }
-
+      #endregion
 
     }
 
@@ -96,7 +102,8 @@ namespace CastleGrimtol.Project
 
     public void Look()
     {
-      throw new System.NotImplementedException();
+      System.Console.WriteLine(CurrentRoom.Description);
+      GetUserInput();
     }
 
     public void Quit()
@@ -113,6 +120,8 @@ namespace CastleGrimtol.Project
     {
       //Rooms
       #region
+      // List<string> list = new List<string>();
+
       Room room1 = new Room("Outside", "You are making your journey though an enchanted forrest, but need to stop to rest for the night. Luckily for you, there is what looks to be, an abandoned mansion up a head. You decide to check it out.");
       Room room2 = new Room("Entry way", "Here you are amazed at the craftsmanship of the entry room. A grand stair case is a head of you (east) and to your left is the kitchen, while to the right is the living room.");
       Room room3 = new Room("Shed", "Wow, this shed is crazy old”, you mumble to yourself as you enter inside. But despite its apparent dilapidation there are a lot of neat things in it. Three of which are a hammer, a shovel, and an axe.");
@@ -201,12 +210,15 @@ namespace CastleGrimtol.Project
 
       #endregion
 
+      CurrentRoom = room1;
 
-      Room currentRoom = room1;
     }
 
     public void StartGame()
     {
+
+      // protected List<string> list = new List<string>();
+
       while (Playing)
       {
         GetUserInput();
