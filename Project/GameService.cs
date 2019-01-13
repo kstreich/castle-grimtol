@@ -128,7 +128,7 @@ namespace CastleGrimtol.Project
       // List<string> list = new List<string>();
 
       Room room1 = new Room("Outside", "There is what looks to be, an abandoned mansion up a head (east).");
-      Room room2 = new Room("Entry way", "As you are admiring the room, you hear a swishing sound and a figure appears. The figure holding out three keys and wants you to only take one. Your first option is a brass skeleton key (key 1), second is a short stubby key (key 2), third is a jewel encrusted key (key 3). Take a key.");
+      Room room2 = new Room("Entry way", "As you enter through the door, you hear a swishing sound and a figure appears. The figure is holding out three keys and wants you to take one. Your first option is a brass skeleton key (key1), second is a short stubby key (key2), and the third is a jewel encrusted key (key3).");
       #region 
       // Room room3 = new Room("Shed", "Wow, this shed is crazy old”, you mumble to yourself as you enter inside. But despite its apparent dilapidation there are a lot of neat things in it. Three of which are a hammer, a shovel, and an axe.");
       // Room room4 = new Room("Living Room", "Here you notice a finely furnished room, with a grand piano and a fully stocked bar");
@@ -239,7 +239,11 @@ namespace CastleGrimtol.Project
         return i.Name.ToUpper() == itemName.ToUpper();
       });
 
-      if (item != null)
+      if (CurrentPlayer.Inventory.Count > 0)
+      {
+        System.Console.WriteLine($"You have already chosen a key");
+      }
+      else if (item != null)
       {
         CurrentRoom.Items.Remove(item);
         CurrentPlayer.Inventory.Add(item);
