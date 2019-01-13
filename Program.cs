@@ -14,9 +14,9 @@ namespace CastleGrimtol
 
       Console.WriteLine(@"
 Console commands
-        go - moves you from room to room
-        take - add item to your inventory
-        use<item> - use an item from your inventory or from room
+        go <direction> - moves you from room to room
+        take <item> - add item to your inventory
+        use <item> - use an item from your inventory or from room
         look - displays the description of the current room
         inventory - will display a list items in your inventory
 
@@ -57,7 +57,7 @@ You can refer to this list by typing in 'help'
 
       Console.WriteLine($"It's time to pay close attention {name}");
 
-      Console.WriteLine("\n You are making your journey though an enchanted forest, but need to stop to rest for the night. Luckily for you, there is what looks to be, an abandoned mansion up a head. You decide to check it out.");
+      Console.WriteLine("\n You are making your journey though an enchanted forest, but need to stop to rest for the night. Luckily for you, you think you see a structure up a head...");
 
 
       gamePlay.CurrentPlayer = player;
