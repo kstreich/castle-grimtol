@@ -68,30 +68,6 @@ namespace CastleGrimtol.Project
         GetUserInput();
       }
 
-
-
-
-      #region
-      // while (true)
-      // {
-      //   switch (CurrentRoom.Exits.ContainsKey(direction.ToUpper()))
-      //   {
-      //     case "NORTH":
-      //       System.Console.WriteLine(CurrentRoom.Description);
-      //       break;
-      //     case "SOUTH":
-      //       System.Console.WriteLine(CurrentRoom.Description);
-      //       break;
-      //     case "WEST":
-      //       System.Console.WriteLine(CurrentRoom.Description);
-      //       break;
-      //     case "EAST":
-      //       System.Console.WriteLine(CurrentRoom.Description);
-      //       break;
-      //   }
-      // }
-      #endregion
-
     }
 
     public void Help()
@@ -132,12 +108,17 @@ namespace CastleGrimtol.Project
 
     public void Quit()
     {
-      throw new System.NotImplementedException();
+      System.Console.Clear();
+      System.Console.WriteLine("Goodbye");
+      Playing = false;
     }
 
     public void Reset()
     {
-      throw new System.NotImplementedException();
+      System.Console.Clear();
+      Setup();
+      Playing = true;
+      StartGame();
     }
 
     public void Setup()
@@ -147,12 +128,14 @@ namespace CastleGrimtol.Project
       // List<string> list = new List<string>();
 
       Room room1 = new Room("Outside", "There is what looks to be, an abandoned mansion up a head (east).");
-      Room room2 = new Room("Entry way", "Here you are amazed at the craftsmanship of the entry room. A grand stair case is a head of you (east) and to your north is the kitchen, while to the south is the living room. As you are admiring the room, you hear a swishing sound and a figure appears. The figure holding out three keys and wants you to only take one. Your first option is a brass skeleton key (key 1), second is a short stubby key (key 2), third is a jewel encrusted key (key 3). Take a key.");
+      Room room2 = new Room("Entry way", "As you are admiring the room, you hear a swishing sound and a figure appears. The figure holding out three keys and wants you to only take one. Your first option is a brass skeleton key (key 1), second is a short stubby key (key 2), third is a jewel encrusted key (key 3). Take a key.");
+      #region 
       // Room room3 = new Room("Shed", "Wow, this shed is crazy old”, you mumble to yourself as you enter inside. But despite its apparent dilapidation there are a lot of neat things in it. Three of which are a hammer, a shovel, and an axe.");
       // Room room4 = new Room("Living Room", "Here you notice a finely furnished room, with a grand piano and a fully stocked bar");
       // Room room5 = new Room("Dining Room", "As you open the door to the dining room, the smell of freshly cooked food awakens your hunger. Along the grand dining table are various dishes of meats of all kinds, steamed and sautéed vegetables, breads and pastas, and anything else a person could imagine. To the right (east) is the door to the kitchen");
       // Room room6 = new Room("Kitchen", "As you walked into the kitchen you noticed how immaculate and clean it looked. Someone has to be here maintaining it, and who cooked all of the food? Out of impulse you yell, “Heellllooo, is anyone in here?");
       // Room room7 = new Room("Stairs", "The beautiful winding stair case looked to lead to a hallway of rooms. “Maybe you could find a safe place to stay the night?” you think to yourself. (Continue east, or west");
+      #endregion
       Room room8 = new Room("HallWay", "Now there are 3 doors (north, east, and south). You quickly shake the handles of all three doors, but they are locked. Then you remembered the key the ghost gave you upon entering the house…");
       Room room9 = new Room("Bed Room 1", "Shocked that the key you have worked, you turn the handle. As the door is slowly opening, a very bright light is shining out of the room. The air is warm and smells sweet, like the beginning of spring. The light begins to dim and you recognize the surrounding garden as your home. In your cottage you see the silhouette of your beloved family.");
       Room room10 = new Room("Bed Room 2", "Shocked that the key you have worked, you turn the handle. As you push the door open, you get shoved into the room and the door instantly locks behind you. The room is completely dark, so much so that you can almost feel the darkness around you. You hear a low grumbling sound behind you. Turning to face the sound you see a pair of bring yellow eyes staring at you. The next moment you’ve been forced to the ground and the creature is ripping you apart with its razor sharp teeth");
@@ -182,7 +165,7 @@ namespace CastleGrimtol.Project
       // room2.Exits.Add("south", room4);
       // room2.Exits.Add("west", room2W);
       room2.Exits.Add("east", room8);
-
+      #region
       // room3.Exits.Add("north", room1);
       // room3.Exits.Add("south", room3SWE);
       // room3.Exits.Add("west", room3SWE);
@@ -208,7 +191,7 @@ namespace CastleGrimtol.Project
       // room7.Exits.Add("south", room7NS);
       // room7.Exits.Add("west", room2);
       // room7.Exits.Add("east", room8);
-
+      #endregion
       room8.Exits.Add("north", room9);
       room8.Exits.Add("south", room11);
       room8.Exits.Add("west", room2);
