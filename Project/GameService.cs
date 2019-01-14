@@ -8,7 +8,7 @@ namespace CastleGrimtol.Project
   {
     public IRoom CurrentRoom { get; set; }
     public Player CurrentPlayer { get; set; }
-    public bool Playing { get; set; } = true; //sets default value of property
+    public bool Playing { get; set; } //sets default value of property
 
     public void GetUserInput()
     {
@@ -99,6 +99,7 @@ namespace CastleGrimtol.Project
         use <item> - use an item from your inventory or from room
         look - displays the description of the current room
         inventory - will display a list items in your inventory
+        quit - end game
       ");
       GetUserInput();
     }
@@ -184,6 +185,7 @@ namespace CastleGrimtol.Project
       #endregion
 
       CurrentRoom = room1;
+      Playing = true;
     }
     public void StartGame()
     {
@@ -193,12 +195,16 @@ namespace CastleGrimtol.Project
       {
         System.Console.WriteLine(CurrentRoom.Description);
         GetUserInput();
+
       };
+
       System.Console.WriteLine("Would you like to play again? (Y/N)");
       string playResp = System.Console.ReadLine();
       if (playResp.ToUpper() == "Y")
       {
+        System.Console.WriteLine($"It's time to pay close attention {CurrentPlayer.PlayerName}");
 
+        System.Console.WriteLine("\n You are making your journey though an enchanted forest, but need to stop to rest for the night. Luckily for you, you think you see a structure...");
         Setup();
         StartGame();
       }
