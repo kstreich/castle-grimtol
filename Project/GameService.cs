@@ -65,12 +65,16 @@ namespace CastleGrimtol.Project
           case "HELP":
             Help();
             break;
+          case "QUIT":
+            Quit();
+            break;
 
         };
       }
     }
     public void Go(string direction)
     {
+      System.Console.Clear();
       if (CurrentRoom.Exits.ContainsKey(direction))
       {
         CurrentRoom = CurrentRoom.Exits[direction];
@@ -87,6 +91,7 @@ namespace CastleGrimtol.Project
 
     public void Help()
     {
+      System.Console.Clear();
       System.Console.WriteLine("Below is your list of commands: ");
       System.Console.WriteLine(@"
         go - moves you from room to room
@@ -102,12 +107,14 @@ namespace CastleGrimtol.Project
     {
       if (CurrentPlayer.Inventory.Count == 0)
       {
+        System.Console.Clear();
         System.Console.WriteLine("No items");
       }
       else
       {
         CurrentPlayer.Inventory.ForEach(item =>
        {
+         System.Console.Clear();
          System.Console.WriteLine(item.Name, item.Description);
 
        });
@@ -117,6 +124,7 @@ namespace CastleGrimtol.Project
 
     public void Look()
     {
+      System.Console.Clear();
       System.Console.WriteLine(CurrentRoom.Description);
       GetUserInput();
     }
@@ -181,12 +189,23 @@ namespace CastleGrimtol.Project
     {
 
       // protected List<string> list = new List<string>();
-
       while (Playing)
       {
         System.Console.WriteLine(CurrentRoom.Description);
         GetUserInput();
       };
+      System.Console.WriteLine("Would you like to play again? (Y/N)");
+      string playResp = System.Console.ReadLine();
+      if (playResp.ToUpper() == "Y")
+      {
+
+        Setup();
+        StartGame();
+      }
+      else
+      {
+        System.Console.WriteLine("Thanks for playing.");
+      }
     }
 
     public void TakeItem(string itemName)
@@ -225,20 +244,27 @@ namespace CastleGrimtol.Project
       Room room11 = new Room("Bed Room 3", "Shocked that the key you have worked, you turn the handle. As you push the door open, you get shoved into the room and the door instantly locks behind you. The room is very dimly lit and you feel spider webs brushing against your face. As you push through the rooms the webs get thicker and thicker to where movement is being hindered. Before you know it, a spider the size of a human has you locked in its fangs.");
 
 
-      if (CurrentRoom.Name == "Hallway" && CurrentPlayer.Inventory[0].Name.ToUpper() == itemName.ToUpper())
+      if (CurrentRoom.Name == "HallWay" && CurrentPlayer.Inventory[0].Name.ToUpper() == itemName.ToUpper())
       {
+        System.Console.Clear();
         CurrentRoom.Exits.Add("north", room9);
         System.Console.WriteLine("The key worked! Go north to enter it");
+        Playing = false;
+
       }
-      else if (CurrentRoom.Name == "Hallway" && CurrentPlayer.Inventory[0].Name.ToUpper() == itemName.ToUpper())
+      else if (CurrentRoom.Name == "HallWay" && CurrentPlayer.Inventory[0].Name.ToUpper() == itemName.ToUpper())
       {
+        System.Console.Clear();
         CurrentRoom.Exits.Add("south", room11);
         System.Console.WriteLine("The key worked! Go south to enter it");
+        Playing = false;
       }
-      else if (CurrentRoom.Name == "Hallway" && CurrentPlayer.Inventory[0].Name.ToUpper() == itemName.ToUpper())
+      else if (CurrentRoom.Name == "HallWay" && CurrentPlayer.Inventory[0].Name.ToUpper() == itemName.ToUpper())
       {
+        System.Console.Clear();
         CurrentRoom.Exits.Add("east", room10);
         System.Console.WriteLine("The key worked! Go east to enter it");
+        Playing = false;
       }
 
 

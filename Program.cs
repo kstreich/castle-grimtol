@@ -30,28 +30,6 @@ You can refer to this list by typing in 'help'
       name = Console.ReadLine();
 
 
-      #region 
-      // if (startInput == "Y" || startInput == "y")
-      // {
-      //   Console.Clear();
-      //   Console.Write("Please enter your name: ");
-      //   while (true)
-      //   {
-      //     name = Console.ReadLine();
-      //     if (name.Length > 1)
-      //     {
-      //       continue;
-      //     }
-      //     Console.Clear();
-      //     break;
-      //   }
-
-      // }
-      // else if (startInput == "N" || startInput == "n")
-      // {
-      //   gamePlay.Quit();
-      // }
-      #endregion
 
       Player player = new Player(name);
 

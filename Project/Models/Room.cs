@@ -7,12 +7,15 @@ namespace CastleGrimtol.Project.Models
   {
     public string Name { get; set; }
     public string Description { get; set; }
+
+    // public bool IsLocked { get; set; }
     public List<Item> Items { get; set; }
     public Dictionary<string, IRoom> Exits { get; set; }
 
     public Room(string name, string description)
     {
       Name = name;
+      // IsLocked = isLocked;
       Description = description;
       Items = new List<Item>();
       Exits = new Dictionary<string, IRoom>();
