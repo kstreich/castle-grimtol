@@ -57,7 +57,7 @@ You can refer to this list by typing in 'help'
 
       Console.WriteLine($"It's time to pay close attention {name}");
 
-      Console.WriteLine("\n You are making your journey though an enchanted forest, but need to stop to rest for the night. Luckily for you, you think you see a structure up a head...");
+      Console.WriteLine("\n You are making your journey though an enchanted forest, but need to stop to rest for the night. Luckily for you, you think you see a structure...");
 
 
       gamePlay.CurrentPlayer = player;

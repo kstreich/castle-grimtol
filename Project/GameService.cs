@@ -14,7 +14,7 @@ namespace CastleGrimtol.Project
     {
       string playerInput;
 
-      System.Console.Write("--> ");
+      System.Console.Write("-> ");
       playerInput = System.Console.ReadLine();
       string[] inputArr = playerInput.Split(" ");
       string command = inputArr[0];
@@ -155,9 +155,9 @@ namespace CastleGrimtol.Project
       // Room room7 = new Room("Stairs", "The beautiful winding stair case looked to lead to a hallway of rooms. “Maybe you could find a safe place to stay the night?” you think to yourself. (Continue east, or west");
       #endregion
       Room room8 = new Room("HallWay", "Now there are 3 doors (north, east, and south). You quickly shake the handles of all three doors, but they are locked. Then you remembered the key the ghost gave you…");
-      Room room9 = new Room("Bed Room 1", "Shocked that the key you have worked, you turn the handle. As the door is slowly opening, a very bright light is shining out of the room. The air is warm and smells sweet, like the beginning of spring. The light begins to dim and you recognize the surrounding garden as your home. In your cottage you see the silhouette of your beloved family.");
-      Room room10 = new Room("Bed Room 2", "Shocked that the key you have worked, you turn the handle. As you push the door open, you get shoved into the room and the door instantly locks behind you. The room is completely dark, so much so that you can almost feel the darkness around you. You hear a low grumbling sound behind you. Turning to face the sound you see a pair of bring yellow eyes staring at you. The next moment you’ve been forced to the ground and the creature is ripping you apart with its razor sharp teeth");
-      Room room11 = new Room("Bed Room 3", "Shocked that the key you have worked, you turn the handle. As you push the door open, you get shoved into the room and the door instantly locks behind you. The room is very dimly lit and you feel spider webs brushing against your face. As you push through the rooms the webs get thicker and thicker to where movement is being hindered. Before you know it, a spider the size of a human has you locked in its fangs.");
+      // Room room9 = new Room("Bed Room 1", "Shocked that the key you have worked, you turn the handle. As the door is slowly opening, a very bright light is shining out of the room. The air is warm and smells sweet, like the beginning of spring. The light begins to dim and you recognize the surrounding garden as your home. In your cottage you see the silhouette of your beloved family.");
+      // Room room10 = new Room("Bed Room 2", "Shocked that the key you have worked, you turn the handle. As you push the door open, you get shoved into the room and the door instantly locks behind you. The room is completely dark, so much so that you can almost feel the darkness around you. You hear a low grumbling sound behind you. Turning to face the sound you see a pair of bring yellow eyes staring at you. The next moment you’ve been forced to the ground and the creature is ripping you apart with its razor sharp teeth");
+      // Room room11 = new Room("Bed Room 3", "Shocked that the key you have worked, you turn the handle. As you push the door open, you get shoved into the room and the door instantly locks behind you. The room is very dimly lit and you feel spider webs brushing against your face. As you push through the rooms the webs get thicker and thicker to where movement is being hindered. Before you know it, a spider the size of a human has you locked in its fangs.");
 
 
       room1.Exits.Add("east", room2);
@@ -219,25 +219,28 @@ namespace CastleGrimtol.Project
     }
 
     public void UseItem(string itemName)
-    //No need to Pass a room since Items can only be used in the CurrentRoom
-    //Make sure you validate the item is in the room or player inventory before
-    //being able to use the item
     {
-      // while (true)
-      // {
-      //   if (CurrentRoom.Name == "Hallway" && CurrentPlayer.Inventory[0].Name == "key1")
-      //   {
-      //     CurrentRoom.Exits.Add("north", room9);
-      //   }
-      //   else if (CurrentRoom.Name == "Hallway" && CurrentPlayer.Inventory[0].Name == "key2")
-      //   {
-      //     CurrentRoom.Exits.Add("north", room11);
-      //   }
-      //   else if (CurrentRoom.Name == "Hallway" && CurrentPlayer.Inventory[0].Name == "key3")
-      //   {
-      //     CurrentRoom.Exits.Add("north", room10);
-      //   }
-      // }
+      Room room9 = new Room("Bed Room 1", "Shocked that the key you have worked, you turn the handle. As the door is slowly opening, a very bright light is shining out of the room. The air is warm and smells sweet, like the beginning of spring. The light begins to dim and you recognize the surrounding garden as your home. In your cottage you see the silhouette of your beloved family.");
+      Room room10 = new Room("Bed Room 2", "Shocked that the key you have worked, you turn the handle. As you push the door open, you get shoved into the room and the door instantly locks behind you. The room is completely dark, so much so that you can almost feel the darkness around you. You hear a low grumbling sound behind you. Turning to face the sound you see a pair of bring yellow eyes staring at you. The next moment you’ve been forced to the ground and the creature is ripping you apart with its razor sharp teeth");
+      Room room11 = new Room("Bed Room 3", "Shocked that the key you have worked, you turn the handle. As you push the door open, you get shoved into the room and the door instantly locks behind you. The room is very dimly lit and you feel spider webs brushing against your face. As you push through the rooms the webs get thicker and thicker to where movement is being hindered. Before you know it, a spider the size of a human has you locked in its fangs.");
+
+
+      if (CurrentRoom.Name == "Hallway" && CurrentPlayer.Inventory[0].Name.ToUpper() == itemName.ToUpper())
+      {
+        CurrentRoom.Exits.Add("north", room9);
+        System.Console.WriteLine("The key worked! Go north to enter it");
+      }
+      else if (CurrentRoom.Name == "Hallway" && CurrentPlayer.Inventory[0].Name.ToUpper() == itemName.ToUpper())
+      {
+        CurrentRoom.Exits.Add("south", room11);
+        System.Console.WriteLine("The key worked! Go south to enter it");
+      }
+      else if (CurrentRoom.Name == "Hallway" && CurrentPlayer.Inventory[0].Name.ToUpper() == itemName.ToUpper())
+      {
+        CurrentRoom.Exits.Add("east", room10);
+        System.Console.WriteLine("The key worked! Go east to enter it");
+      }
+
 
     }
   }
