@@ -19,9 +19,6 @@ namespace CastleGrimtol.Project
       string[] inputArr = playerInput.Split(" ");
       string command = inputArr[0];
 
-      // while (true)
-      //split the string and add to an array then use array[0]
-
       {
         switch (command.ToUpper())
         {
@@ -40,6 +37,10 @@ namespace CastleGrimtol.Project
             if (inputArr.Length > 1)
             {
               TakeItem(inputArr[1]);
+            }
+            else if (inputArr[1].ToUpper() == "KEY")
+            {
+              System.Console.WriteLine("Please enter in key1, key2, or key3");
             }
             else
             {
@@ -79,6 +80,7 @@ namespace CastleGrimtol.Project
       {
         CurrentRoom = CurrentRoom.Exits[direction];
         System.Console.WriteLine(CurrentRoom.Description);
+        CheckGameStatus();
         GetUserInput();
       }
       else
@@ -89,6 +91,27 @@ namespace CastleGrimtol.Project
 
     }
 
+    public void CheckGameStatus()
+    {
+      if (CurrentRoom.Name == "BedRoom1")
+      {
+        System.Console.WriteLine("You Win!!");
+        Playing = false;
+        Quit();
+      }
+      else if (CurrentRoom.Name == "BedRoom2")
+      {
+        System.Console.WriteLine("You Lose!");
+        Playing = false;
+        Quit();
+      }
+      if (CurrentRoom.Name == "BedRoom3")
+      {
+        System.Console.WriteLine("You Lose!");
+        Playing = false;
+        Quit();
+      }
+    }
     public void Help()
     {
       System.Console.Clear();
@@ -132,9 +155,27 @@ namespace CastleGrimtol.Project
 
     public void Quit()
     {
-      System.Console.Clear();
-      System.Console.WriteLine("Goodbye");
-      Playing = false;
+      // System.Console.Clear();
+      // System.Console.WriteLine("Goodbye");
+      // Playing = false;
+
+      System.Console.WriteLine("Would you like to play again? (Y/N)");
+      string playResp = System.Console.ReadLine();
+      if (playResp.ToUpper() == "Y")
+      {
+        CurrentPlayer.Inventory = new List<Item>();
+        System.Console.WriteLine($"It's time to pay close attention {CurrentPlayer.PlayerName}");
+
+        System.Console.WriteLine("\n You are making your journey though an enchanted forest, but need to stop to rest for the night. Luckily for you, you think you see a structure...");
+        Setup();
+        StartGame();
+      }
+      else
+      {
+        System.Console.WriteLine("Thanks for playing.");
+        Playing = false;
+        Quit();
+      }
     }
 
     public void Reset()
@@ -198,20 +239,20 @@ namespace CastleGrimtol.Project
 
       };
 
-      System.Console.WriteLine("Would you like to play again? (Y/N)");
-      string playResp = System.Console.ReadLine();
-      if (playResp.ToUpper() == "Y")
-      {
-        System.Console.WriteLine($"It's time to pay close attention {CurrentPlayer.PlayerName}");
+      // System.Console.WriteLine("Would you like to play again? (Y/N)");
+      // string playResp = System.Console.ReadLine();
+      // if (playResp.ToUpper() == "Y")
+      // {
+      //   System.Console.WriteLine($"It's time to pay close attention {CurrentPlayer.PlayerName}");
 
-        System.Console.WriteLine("\n You are making your journey though an enchanted forest, but need to stop to rest for the night. Luckily for you, you think you see a structure...");
-        Setup();
-        StartGame();
-      }
-      else
-      {
-        System.Console.WriteLine("Thanks for playing.");
-      }
+      //   System.Console.WriteLine("\n You are making your journey though an enchanted forest, but need to stop to rest for the night. Luckily for you, you think you see a structure...");
+      //   Setup();
+      //   StartGame();
+      // }
+      // else
+      // {
+      //   System.Console.WriteLine("Thanks for playing.");
+      // }
     }
 
     public void TakeItem(string itemName)
@@ -237,7 +278,8 @@ namespace CastleGrimtol.Project
       }
       else
       {
-        System.Console.WriteLine("No items here");
+        System.Console.Clear();
+        System.Console.WriteLine("Type in - take key1, key2, or key3");
       }
 
       GetUserInput();
@@ -245,32 +287,42 @@ namespace CastleGrimtol.Project
 
     public void UseItem(string itemName)
     {
-      Room room9 = new Room("Bed Room 1", "Shocked that the key you have worked, you turn the handle. As the door is slowly opening, a very bright light is shining out of the room. The air is warm and smells sweet, like the beginning of spring. The light begins to dim and you recognize the surrounding garden as your home. In your cottage you see the silhouette of your beloved family.");
-      Room room10 = new Room("Bed Room 2", "Shocked that the key you have worked, you turn the handle. As you push the door open, you get shoved into the room and the door instantly locks behind you. The room is completely dark, so much so that you can almost feel the darkness around you. You hear a low grumbling sound behind you. Turning to face the sound you see a pair of bring yellow eyes staring at you. The next moment you’ve been forced to the ground and the creature is ripping you apart with its razor sharp teeth");
-      Room room11 = new Room("Bed Room 3", "Shocked that the key you have worked, you turn the handle. As you push the door open, you get shoved into the room and the door instantly locks behind you. The room is very dimly lit and you feel spider webs brushing against your face. As you push through the rooms the webs get thicker and thicker to where movement is being hindered. Before you know it, a spider the size of a human has you locked in its fangs.");
+      Room room9 = new Room("BedRoom1", "Shocked that the key you have worked, you turn the handle. As the door is slowly opening, a very bright light is shining out of the room. The air is warm and smells sweet, like the beginning of spring. The light begins to dim and you recognize the surrounding garden as your home. In your cottage you see the silhouette of your beloved family.");
+      Room room10 = new Room("BedRoom2", "Shocked that the key you have worked, you turn the handle. As you push the door open, you get shoved into the room and the door instantly locks behind you. The room is completely dark, so much so that you can almost feel the darkness around you. You hear a low grumbling sound behind you. Turning to face the sound you see a pair of bring yellow eyes staring at you. The next moment you’ve been forced to the ground and the creature is ripping you apart with its razor sharp teeth");
+      Room room11 = new Room("BedRoom3", "Shocked that the key you have worked, you turn the handle. As you push the door open, you get shoved into the room and the door instantly locks behind you. The room is very dimly lit and you feel spider webs brushing against your face. As you push through the rooms the webs get thicker and thicker to where movement is being hindered. Before you know it, a spider the size of a human has you locked in its fangs.");
 
 
-      if (CurrentRoom.Name == "HallWay" && CurrentPlayer.Inventory[0].Name.ToUpper() == itemName.ToUpper())
+      if (CurrentRoom.Name == "HallWay" && CurrentPlayer.Inventory[0].Name.ToUpper() == "KEY1")
       {
         System.Console.Clear();
         CurrentRoom.Exits.Add("north", room9);
         System.Console.WriteLine("The key worked! Go north to enter it");
-        Playing = false;
+        GetUserInput();
+        // System.Console.WriteLine("You Win!");
+        // Quit();
+        // Playing = false;
 
       }
-      else if (CurrentRoom.Name == "HallWay" && CurrentPlayer.Inventory[0].Name.ToUpper() == itemName.ToUpper())
+      else if (CurrentRoom.Name == "HallWay" && CurrentPlayer.Inventory[0].Name.ToUpper() == "KEY2")
       {
         System.Console.Clear();
         CurrentRoom.Exits.Add("south", room11);
         System.Console.WriteLine("The key worked! Go south to enter it");
-        Playing = false;
+        GetUserInput();
+        // System.Console.WriteLine("You Lose!");
+        // Quit();
+
+        // Playing = false;
       }
-      else if (CurrentRoom.Name == "HallWay" && CurrentPlayer.Inventory[0].Name.ToUpper() == itemName.ToUpper())
+      else if (CurrentRoom.Name == "HallWay" && CurrentPlayer.Inventory[0].Name.ToUpper() == "KEY3")
       {
         System.Console.Clear();
         CurrentRoom.Exits.Add("east", room10);
         System.Console.WriteLine("The key worked! Go east to enter it");
-        Playing = false;
+        GetUserInput();
+        // System.Console.WriteLine("You Lose!");
+        // Quit();
+        // Playing = false;
       }
 
 
